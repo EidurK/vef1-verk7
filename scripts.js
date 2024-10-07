@@ -49,32 +49,122 @@ function split(str, separator = ' ') {
 // Grunnföll sem skilgreina á
 
 function longest(str) {
-  // Útfæra
+  if(!isString(str)){
+    return null
+  }
+  const words =  split(str);
+  let longest_word = 0;
+  for(let i = 0; i < words.length; i++){
+    if(words[longest_word].length < words[i].length){
+      longest_word = i;
+    }
+  }
+  return words[longest_word];
 }
+console.assert(longest() === null, 'longest: skilar null fyrir ekkert');
+console.assert(longest("shortword verylongword") === "verylongword", 'longest: lengsta orðinu í streng');
 
 function shortest(str) {
-  // Útfæra
+  if(!isString(str)){
+    return null
+  }
+  const words =  split(str);
+  let shortest_word = 0;
+  for(let i = 0; i < words.length; i++){
+    if(words[shortest_word].length > words[i].length){
+      shortest_word = i;
+    }
+  }
+  return words[shortest_word];
 }
+console.assert(shortest() === null, 'shortest: skilar null fyrir ekkert');
+console.assert(shortest("shortword verylongword") === "shortword", 'shortest: stysta orðinu í streng');
 
 function reverse(str) {
-  // Útfæra
+  if(!isString(str)){
+    return null
+  }
+  const stafir = str.split('').reverse().join('');
+  return stafir
 }
+console.assert(reverse() === null, 'reverse: skilar null fyrir ekkert');
+console.assert(reverse('reverse') === 'esrever', 'reverse: skilar "esrever" fyrir "reverse"');
 
 function palindrome(str) {
-  // Útfæra
+  if(!isString(str)|| str == ''){
+    return false
+  }
+  const _reverse = reverse(str);
+  return (str == _reverse)
 }
+console.assert(palindrome() === false, 'palindrome: skilar false fyrir ekkert');
+console.assert(palindrome("madam") === true, 'palindrome: skilar true fyrir "madam"');
+console.assert(palindrome("some madam") === false, 'palindrome: skilar false fyrir "some madam"');
 
 function vowels(str) {
-  // Útfæra
+  if(!isString(str)){
+    return 0;
+  }
+  const stafir = str.split('');
+  let c = 0;
+  for(let i = 0; i < stafir.length; i++) {
+    for(let j = 0; j<VOWELS.length; j++){
+      if(stafir[i] == VOWELS[j]){
+        c++;
+      }
+    }
+  }
+  return c;
 }
+console.assert(vowels() === 0, 'vowels: skilar 0 fyrir ekkert');
+console.assert(vowels("bla blaa") === 3, 'vowels: skilar 3 fyrir "bla blaa');
 
 function consonants(str) {
+  if(!isString(str)){
+    return 0;
+  }
+  const stafir = str.split('');
+  let c = 0;
+  for(let i = 0; i < stafir.length; i++) {
+    for(let j = 0; j<CONSONANTS.length; j++){
+      if(stafir[i] == CONSONANTS[j]){
+        c++;
+      }
+    }
+  }
+  return c;
   // Útfæra
 }
+console.assert(consonants() === 0, 'consonants: skilar 0 fyrir ekkert');
+console.assert(consonants("bla blaa") === 4, 'consonants: skilar 4 fyrir "bla blaa');
 
 //------------------------------------------------------------------------------
 // Leiðbeint ferli
 
 function start() {
+  alert("Skrifaðu inn streng og ég mun segja þér gagnslausar upplýsingar um hann.")
+  const strengur = prompt("Feed me strings!!");
+
+  const _long = longest(strengur);
+  const _short = shortest(strengur);
+  const _reverse = reverse(strengur);
+  const _palindrome = palindrome(strengur)
+  const _vowels = vowels(strengur);
+  const _consonants = consonants(strengur);
+
+  alert(`Lengsti strengur: ${_long}`);
+  alert(`Stysti strengur: ${_short}`);
+  alert(`Reverse strengur: ${_reverse}`);
+  alert(`Palindrom?: ${_palindrome}`);
+  alert(`vowels?: ${_vowels}`);
+  alert(`consonants?: ${_consonants}`);
   // Útfæra
 }
+window.longest = longest;
+window.shortest = shortest;
+window.reverse = reverse;
+window.palindrome = palindrome;
+window.palindrome = palindrome;
+window.vowels = vowels;
+window.consonants = consonants;
+window.start = start;
