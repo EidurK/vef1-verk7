@@ -148,23 +148,17 @@ function start() {
   const _long = longest(strengur);
   const _short = shortest(strengur);
   const _reverse = reverse(strengur);
-  const _palindrome = palindrome(strengur)
+  const _palindrome = palindrome(strengur)?'já':'nei';
   const _vowels = vowels(strengur);
   const _consonants = consonants(strengur);
 
-  alert(`Lengsti strengur: ${_long}`);
-  alert(`Stysti strengur: ${_short}`);
-  alert(`Reverse strengur: ${_reverse}`);
-  alert(`Palindrom?: ${_palindrome}`);
-  alert(`vowels?: ${_vowels}`);
-  alert(`consonants?: ${_consonants}`);
-  // Útfæra
+  alert(`
+  Lengsti strengur: ${_long}
+  Stysti strengur: ${_short}
+  Reverse strengur: ${_reverse}
+  Palindrom?: ${_palindrome}
+  vowels?: ${_vowels}
+  consonants?: ${_consonants}
+  `);
 }
-window.longest = longest;
-window.shortest = shortest;
-window.reverse = reverse;
-window.palindrome = palindrome;
-window.palindrome = palindrome;
-window.vowels = vowels;
-window.consonants = consonants;
-window.start = start;
+
