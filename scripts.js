@@ -95,11 +95,12 @@ function palindrome(str) {
     return false
   }
   const _reverse = reverse(str);
-  return (str == _reverse)
+  return (str.toLowerCase() == _reverse.toLowerCase())
 }
 console.assert(palindrome() === false, 'palindrome: skilar false fyrir ekkert');
 console.assert(palindrome("madam") === true, 'palindrome: skilar true fyrir "madam"');
 console.assert(palindrome("some madam") === false, 'palindrome: skilar false fyrir "some madam"');
+console.assert(palindrome("Huh") === true, 'palindrome: skilar true fyrir "Huh"');
 
 function vowels(str) {
   if(!isString(str)){
